@@ -6,6 +6,7 @@
 package Interfaz;
 
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -18,8 +19,56 @@ public class Cerrar_caja extends javax.swing.JFrame {
      */
     public Cerrar_caja() {
         initComponents();
+        alineacion();
+       
+    }
+   
+    
+    public void alineacion()
+    {
+        txt20.setText("0");
+        Txt10.setText("0");
+        txt5.setText("0");
+        txt2.setText("0");
+        txt1.setText("0");
+        txtkina.setText("0");
+        txtgamba.setText("0");
+        txt50.setText("0");
+        txtdiez.setText("0");
+        txtTotal.setText("0");
+        txt20.setHorizontalAlignment(txt20.RIGHT);
+        Txt10.setHorizontalAlignment(Txt10.RIGHT);
+        txt5.setHorizontalAlignment(txt5.RIGHT);
+        txt2.setHorizontalAlignment(txt2.RIGHT);
+        txt1.setHorizontalAlignment(txt1.RIGHT);
+        txtkina.setHorizontalAlignment(txtkina.RIGHT);
+        txtgamba.setHorizontalAlignment(txtgamba.RIGHT);
+        txt50.setHorizontalAlignment(txtgamba.RIGHT);
+        txtdiez.setHorizontalAlignment(txtdiez.RIGHT);
+        txtTotal.setHorizontalAlignment(txtTotal.RIGHT);
+    }
+    public void SumaTotal()
+    {
+           try{
+            DecimalFormat formatea = new DecimalFormat("###,###.##"); 
+            int n20=Integer.parseInt(this.txt20.getText());
+            int n10=Integer.parseInt(this.Txt10.getText());
+            int n5 =Integer.parseInt(this.txt5.getText());
+            int n2 =Integer.parseInt(this.txt2.getText());
+            int n1 =Integer.parseInt(this.txt1.getText());
+            int n500=Integer.parseInt(this.txtkina.getText());
+            int n100=Integer.parseInt(this.txtgamba.getText());
+            int n50=Integer.parseInt(this.txt50.getText());
+            int ndiez=Integer.parseInt(this.txtdiez.getText());
+            int suma=(n20+n10+n5+n2+n1+n500+n100+n50+ndiez);
+            String Resultado= String.valueOf(suma);
+            txtTotal.setText(formatea.format(Resultado));}
+           catch(NumberFormatException e){
+               System.out.println("error");
+           }        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,17 +107,59 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
         jLabel2.setText("10.000");
 
+        txt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt1KeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("5.000");
+
+        txtkina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtkinaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtkinaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("2.000");
 
+        txtgamba.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtgambaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtgambaKeyTyped(evt);
+            }
+        });
+
         jLabel5.setText("1.000");
+
+        txt50.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt50KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt50KeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("500");
 
         jLabel9.setText("50");
 
         jLabel7.setText("100");
+
+        txtdiez.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtdiezKeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("10");
 
@@ -111,8 +202,18 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
         jLabel1.setText("20.000");
 
+        txt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt2KeyTyped(evt);
+            }
+        });
+
         jLabel10.setText("Total:");
 
+        txtTotal.setEditable(false);
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalActionPerformed(evt);
@@ -264,14 +365,7 @@ public class Cerrar_caja extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTotalKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     int suma=0;
-     int resultado=0;
-    resultado=Integer.parseInt(this.txt20.getText())+Integer.parseInt(this.Txt10.getText())+
-              Integer.parseInt(this.txt5.getText())+Integer.parseInt(this.txt2.getText())+
-              Integer.parseInt(this.txt1.getText())+Integer.parseInt(this.txtkina.getText())+
-              Integer.parseInt(this.txtgamba.getText())+Integer.parseInt(this.txt50.getText())+
-            Integer.parseInt(this.txtdiez.getText());
-    txtTotal.setText(String.valueOf(resultado));
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt20ActionPerformed
@@ -290,10 +384,16 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
     private void txt20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt20KeyPressed
      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      try{
       int resultado=0;
       resultado = (Integer.parseInt(this.txt20.getText())*20000);
       txt20.setText(String.valueOf(resultado));
-      Txt10.requestFocus();}
+      Txt10.requestFocus();
+      SumaTotal();
+      }
+      catch(NumberFormatException e){System.out.println("falla txt20");}
+      
+     }
               
     }//GEN-LAST:event_txt20KeyPressed
 
@@ -316,6 +416,7 @@ public class Cerrar_caja extends javax.swing.JFrame {
       resultado = (Integer.parseInt(this.Txt10.getText())*10000);
       Txt10.setText(String.valueOf(resultado));
       txt5.requestFocus();
+      SumaTotal();      
       }
     }//GEN-LAST:event_Txt10KeyPressed
 
@@ -323,15 +424,115 @@ public class Cerrar_caja extends javax.swing.JFrame {
         // TODO add your handling code here:
       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
       int resultado=0;
-      resultado = (Integer.parseInt(this.txt20.getText())*5000);
-      txt20.setText(String.valueOf(resultado));
-      Txt10.requestFocus();
+      resultado = (Integer.parseInt(this.txt5.getText())*5000);
+      txt5.setText(String.valueOf(resultado));
+      txt2.requestFocus();
+      SumaTotal();
       }
     }//GEN-LAST:event_txt5KeyPressed
 
     private void txt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt5KeyTyped
         // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();            
+        
     }//GEN-LAST:event_txt5KeyTyped
+
+    private void txt2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt2KeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txt2.getText())*2000);
+      txt2.setText(String.valueOf(resultado));
+      txt1.requestFocus();
+      SumaTotal();
+      }
+    }//GEN-LAST:event_txt2KeyPressed
+
+    private void txt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt2KeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txt2KeyTyped
+
+    private void txt1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txt1.getText())*1000);
+      txt1.setText(String.valueOf(resultado));
+      txtkina.requestFocus();
+      SumaTotal();
+      }
+    }//GEN-LAST:event_txt1KeyPressed
+
+    private void txt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txt1KeyTyped
+
+    private void txtkinaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkinaKeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txtkina.getText())*500);
+      txtkina.setText(String.valueOf(resultado));
+      txtgamba.requestFocus();
+      SumaTotal();
+      }
+    }//GEN-LAST:event_txtkinaKeyPressed
+
+    private void txtkinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkinaKeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txtkinaKeyTyped
+
+    private void txtgambaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgambaKeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txtgamba.getText())*100);
+      txtgamba.setText(String.valueOf(resultado));
+      txt50.requestFocus();
+      SumaTotal();
+      }
+    }//GEN-LAST:event_txtgambaKeyPressed
+
+    private void txtgambaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgambaKeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txtgambaKeyTyped
+
+    private void txt50KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt50KeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txt50.getText())*50);
+      txt50.setText(String.valueOf(resultado));
+      txtdiez.requestFocus();
+      SumaTotal();
+      }
+    }//GEN-LAST:event_txt50KeyPressed
+
+    private void txt50KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt50KeyTyped
+        // TODO add your handling code here:
+        char c =evt.getKeyChar();
+        if (c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txt50KeyTyped
+
+    private void txtdiezKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiezKeyPressed
+        // TODO add your handling code here:
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+      int resultado=0;
+      resultado = (Integer.parseInt(this.txtdiez.getText())*10);
+      txtdiez.setText(String.valueOf(resultado));
+      SumaTotal();
+     
+      }
+    }//GEN-LAST:event_txtdiezKeyPressed
 
     /**
      * @param args the command line arguments
