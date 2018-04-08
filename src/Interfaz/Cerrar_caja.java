@@ -22,7 +22,7 @@ public class Cerrar_caja extends javax.swing.JFrame {
         alineacion();
        
     }
-   
+     DecimalFormat formateador = new DecimalFormat("###,###.##");
     
     public void alineacion()
     {
@@ -43,14 +43,15 @@ public class Cerrar_caja extends javax.swing.JFrame {
         txt1.setHorizontalAlignment(txt1.RIGHT);
         txtkina.setHorizontalAlignment(txtkina.RIGHT);
         txtgamba.setHorizontalAlignment(txtgamba.RIGHT);
-        txt50.setHorizontalAlignment(txtgamba.RIGHT);
+        txt50.setHorizontalAlignment(txt50.RIGHT);
         txtdiez.setHorizontalAlignment(txtdiez.RIGHT);
         txtTotal.setHorizontalAlignment(txtTotal.RIGHT);
+       
     }
     public void SumaTotal()
     {
+       
            try{
-            DecimalFormat formatea = new DecimalFormat("###,###.##"); 
             int n20=Integer.parseInt(this.txt20.getText());
             int n10=Integer.parseInt(this.Txt10.getText());
             int n5 =Integer.parseInt(this.txt5.getText());
@@ -60,9 +61,9 @@ public class Cerrar_caja extends javax.swing.JFrame {
             int n100=Integer.parseInt(this.txtgamba.getText());
             int n50=Integer.parseInt(this.txt50.getText());
             int ndiez=Integer.parseInt(this.txtdiez.getText());
-            int suma=(n20+n10+n5+n2+n1+n500+n100+n50+ndiez);
-            String Resultado= String.valueOf(suma);
-            txtTotal.setText(formatea.format(Resultado));}
+            int suma=(n20+n10+n5+n2+n1+n500+n100+n50+ndiez);            
+            txtTotal.setText("$ "+formateador.format(suma));
+           }
            catch(NumberFormatException e){
                System.out.println("error");
            }        
@@ -98,10 +99,10 @@ public class Cerrar_caja extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,6 +119,11 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
         jLabel3.setText("5.000");
 
+        txtkina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtkinaActionPerformed(evt);
+            }
+        });
         txtkina.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtkinaKeyPressed(evt);
@@ -213,18 +219,6 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
         jLabel10.setText("Total:");
 
-        txtTotal.setEditable(false);
-        txtTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalActionPerformed(evt);
-            }
-        });
-        txtTotal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTotalKeyReleased(evt);
-            }
-        });
-
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +235,8 @@ public class Cerrar_caja extends javax.swing.JFrame {
 
         jLabel11.setText("Cuadratura");
 
+        txtTotal.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -250,14 +246,14 @@ public class Cerrar_caja extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(36, 36, 36)
                                 .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTotal))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -270,27 +266,27 @@ public class Cerrar_caja extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(0, 76, Short.MAX_VALUE))
+                            .addComponent(txt20, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Txt10)
+                            .addComponent(txt5)
                             .addComponent(txt2)
                             .addComponent(txt1)
                             .addComponent(txtkina)
                             .addComponent(txtgamba)
-                            .addComponent(txtdiez)
-                            .addComponent(Txt10)
-                            .addComponent(txt5)
                             .addComponent(txt50)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txt20))))
+                            .addComponent(txtdiez))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -344,25 +340,17 @@ public class Cerrar_caja extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
-    
-    }//GEN-LAST:event_txtTotalActionPerformed
-
-    private void txtTotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotalKeyReleased
-     
-    }//GEN-LAST:event_txtTotalKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
@@ -506,33 +494,37 @@ public class Cerrar_caja extends javax.swing.JFrame {
         if (c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_txtgambaKeyTyped
 
-    private void txt50KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt50KeyPressed
-        // TODO add your handling code here:
-      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-      int resultado=0;
-      resultado = (Integer.parseInt(this.txt50.getText())*50);
-      txt50.setText(String.valueOf(resultado));
-      txtdiez.requestFocus();
-      SumaTotal();
-      }
-    }//GEN-LAST:event_txt50KeyPressed
-
     private void txt50KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt50KeyTyped
         // TODO add your handling code here:
         char c =evt.getKeyChar();
         if (c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_txt50KeyTyped
 
+    private void txt50KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt50KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            int resultado=0;
+            resultado = (Integer.parseInt(this.txt50.getText())*50);
+            txt50.setText(String.valueOf(resultado));
+            txtdiez.requestFocus();
+            SumaTotal();
+        }
+    }//GEN-LAST:event_txt50KeyPressed
+
     private void txtdiezKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiezKeyPressed
         // TODO add your handling code here:
-      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-      int resultado=0;
-      resultado = (Integer.parseInt(this.txtdiez.getText())*10);
-      txtdiez.setText(String.valueOf(resultado));
-      SumaTotal();
-     
-      }
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            int resultado=0;
+            resultado = (Integer.parseInt(this.txtdiez.getText())*10);
+            txtdiez.setText(String.valueOf(resultado));
+            SumaTotal();
+
+        }
     }//GEN-LAST:event_txtdiezKeyPressed
+
+    private void txtkinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtkinaActionPerformed
 
     /**
      * @param args the command line arguments
