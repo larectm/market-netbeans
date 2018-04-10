@@ -5,18 +5,10 @@
  */
 package Clases;
 
-import java.text.DecimalFormat;
-
 /**
  *
  * @author Felipe
  */
-public class Calculo {
+public class Vendedor {
     
- 
-
-    public static void main (String arg [])
-    {
-        
-    }
 }
