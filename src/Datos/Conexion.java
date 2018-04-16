@@ -1,4 +1,7 @@
 /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+/*
  *PERMITE CONECTAR EL PROGRAMA CON LA BASE DE DATOS
  */
 /**
@@ -16,14 +19,9 @@ public class Conexion {
 
   
     //Declaracion de variables para mi MYSQL
-    static final String DRIVER = "com.mysql.jdbc.Driver";
+    static final String DRIVER = "com.postgresql.jdbc.Driver";
     Statement instruccion = null;
     public static Statement sentencia;
-    public static boolean buscaRutPersona;
-    public static boolean buscarActivo;
-    public static boolean buscarAduana;
-    public static boolean buscarLugar;
-    public static boolean buscarAsignacion;
     //CONTRUCTOR SIN PARAMENTROS
     public Conexion() { }
     //CONTRUCTOR CON PARAMENTROS DE TIPO USUARIO CLAVE
@@ -34,7 +32,7 @@ public class Conexion {
         try {
             Class.forName(DRIVER);
             try {
-                objConectar = DriverManager.getConnection("jdbc:mysql://localhost/bdinventario", "root", "");
+                objConectar = DriverManager.getConnection("jdbc:postgresql://localhost:5432/market", "postgres", "");
                 instruccion = objConectar.createStatement();
             } catch (SQLException e) {
                 if (objConectar == null) {
@@ -139,4 +137,11 @@ public class Conexion {
             e.printStackTrace();
         }
     }
+    public static void main(String args[]) {
+        Conexion conex = new Conexion ();
+        conex.abrirConeccionBd("postgres", "1234");
+    }
 }
+
+    
+

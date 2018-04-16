@@ -66,6 +66,10 @@ public class Venta extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -293,6 +297,19 @@ public class Venta extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setText("Tools");
+
+        jMenuItem3.setText("Agregar producto");
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("Agregar vendedor");
+        jMenu3.add(jMenuItem4);
+
+        jMenu4.setText("Agregar usuario");
+        jMenu3.add(jMenu4);
+
+        jMenuBar1.add(jMenu3);
+
         jMenu2.setText("Salir");
 
         jMenuItem1.setText("Login");
@@ -434,9 +451,13 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
