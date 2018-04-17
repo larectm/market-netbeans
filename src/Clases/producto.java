@@ -67,21 +67,20 @@ public class producto {
     public void setNom_pro(String nom_pro) {
         this.nom_pro = nom_pro;
     }
-    /*
     
-   
-   //metodo insetarPersona , que ingresa el registro a la base de dato
-    public void  insertrPro(String nom_pro,int stock,int precio)
-    {      try {
-           canal=conex.abrirConeccionBd(usuario, clave);
-           String sql = "insert into producto (nom_pro,stock,precio) values('"+nom_pro + "',"+stock+","+precio+")";
-           conex.ejecutarTransaccion(sql, canal);
+    
+     public void  insertrPro(String nom_pro,int stock,int precio)
+    {      try { String sql = "insert into producto (nom_pro,stock,precio) values('"+nom_pro + "',"+stock+","+precio+")";
+          Conexion cn = new Conexion();
+           objconexion = cn.abrirConeccionBd(usuario, clave);
+           Conexion.sentencia = objconexion.prepareStatement(sql);
+           cn.ejecutarTransaccion(sql, objconexion);              
            try {
-                //JOptionPane.showMessageDialog(null, "Se ingreso el usuario :"+nombre+' '+apellido_paterno+" correctamente..");
+                JOptionPane.showMessageDialog(null, "producto "+nom_pro+" Ingresado correctamente");
                 System.out.println("Transaccion realizada a la tabla producto");
-                        }
+                  }
             catch (HeadlessException e){
-                 //JOptionPane.showMessageDialog(null, "Se ingreso el usuario :"+nombre+' '+apellido_paterno+" correctamente..");   
+                JOptionPane.showMessageDialog(null, "error fatal ");
                 }
                 System.out.println("error metodo insertar producto exception 1");
                 }
@@ -90,5 +89,5 @@ public class producto {
                 
                 System.out.println("error metodo insertar producto exception2");
                 
-            }*/
+            }
     }

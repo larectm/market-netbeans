@@ -28,6 +28,9 @@ public class Vendedor {
         this.sueldo = sueldo;
     }
 
+    public Vendedor() {
+    }
+
     public String getRut() {
         return rut;
     }

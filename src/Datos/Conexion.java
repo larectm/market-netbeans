@@ -16,23 +16,19 @@ package Datos;
 import java.sql.*;
 
 public class Conexion {
-
-  
-    //Declaracion de variables para mi MYSQL
-    static final String DRIVER = "com.postgresql.jdbc.Driver";
-    Statement instruccion = null;
-    public static Statement sentencia;
-    //CONTRUCTOR SIN PARAMENTROS
-    public Conexion() { }
-    //CONTRUCTOR CON PARAMENTROS DE TIPO USUARIO CLAVE
+     Statement instruccion = null;
+     public static Statement sentencia;
+    
     public Connection abrirConeccionBd(String pUsuario, String pClave) {
-        String lUrl = " ";
+        String lUrl = "jdbc:postgresql://localhost:5432/market";
+        pUsuario="postgres";
+        pClave= "1234";
         Connection objConectar = null;
         String lMensaje = " ";
         try {
-            Class.forName(DRIVER);
+            Class.forName("org.postgresql.Driver");
             try {
-                objConectar = DriverManager.getConnection("jdbc:postgresql://localhost:5432/market", "postgres", "");
+                objConectar = DriverManager.getConnection(lUrl,pUsuario,pClave);
                 instruccion = objConectar.createStatement();
             } catch (SQLException e) {
                 if (objConectar == null) {
@@ -137,11 +133,9 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-    public static void main(String args[]) {
-        Conexion conex = new Conexion ();
-        conex.abrirConeccionBd("postgres", "1234");
-    }
 }
+    
+
 
     
 
